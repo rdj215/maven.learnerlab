@@ -21,4 +21,5 @@ public class Student extends Person implements Learner {
     public Double getTotalStudyTime() {
         return totalStudyTime;
     }
+
 }
