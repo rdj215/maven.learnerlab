@@ -5,27 +5,27 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class People implements Iterable<Person> {
+public abstract class People <E> implements Iterable<Person> {
     private List<Person> personList;
 
-    public People() {
+    public <E> People () {
         this.personList = new ArrayList<>();
     }
 
 
 
-    public void add(Person personObject) {
+    public <E> void add( Person personObject) {
         personList.add(personObject);
     }
 
 
-    public List<Person> findById(long id) {
+    public List<E> findById(long id) {
         for (Person person : personList) {
             if (person.getId() == id) {
-                return personList;
+                return (List<E>) personList;
             }
         }
-        return personList;
+        return (List<E>) personList;
 
     }
 
@@ -45,7 +45,7 @@ public class People implements Iterable<Person> {
 
     public void removeAll() {
         personList.clear();
-        ;
+
     }
 
     public int count() {
@@ -53,9 +53,10 @@ public class People implements Iterable<Person> {
 
     }
 
-    public Person[] toArray() {
-        return (Person[]) personList.toArray();
-    }
+    public abstract <E> Person[] getArray();
+//    {
+//        return (Person[]) personList.toArray();
+//    }
 
     @Override
     public Iterator<Person> iterator() {

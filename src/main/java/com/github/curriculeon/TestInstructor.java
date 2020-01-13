@@ -39,20 +39,24 @@ public class TestInstructor {
         Instructor instructor = new Instructor(7,"Teacher2");
         Student[] studentArray = new Student[]{
             new Student(1, "student1",5), new Student(3,"student2",7),
-                new Student(4,"student3",10)
+                new Student(4,"student3",30)
         };
         int i = 0;
-            Student [] initialStudyTime = studentArray.clone();
-        System.out.println(initialStudyTime[i].getTotalStudyTime());
-        instructor.lecture(studentArray,25);
-        System.out.println(initialStudyTime[i].getTotalStudyTime());
+        Student[] studentArray2 = new Student[]{
+                new Student(1, "student1",5), new Student(3,"student2",7),
+                new Student(4,"student3",30)
+        };
+
+//            System.out.println(initialStudyTime[i].getTotalStudyTime());
+        instructor.lecture(studentArray,30);
+//        System.out.println(initialStudyTime[i].getTotalStudyTime());
 
         for ( i = 0; i < studentArray.length; i++) {
 
-//            double actualStudyTime = studentArray[i].getTotalStudyTime();
-//            double expectedStudyTime = initialStudyTime[i].getTotalStudyTime()+3;
-            Assert.assertEquals(studentArray[i].getTotalStudyTime(),initialStudyTime[i].getTotalStudyTime());
-            System.out.println("initial "+ "expected: "+studentArray[i].getTotalStudyTime() + " " + "acutal " + initialStudyTime[i].getTotalStudyTime());
+            double actualStudyTime = studentArray[i].getTotalStudyTime();
+            double expectedStudyTime = studentArray2[i].getTotalStudyTime()+10;
+            Assert.assertEquals(actualStudyTime, expectedStudyTime, 0.5);
+
             ;
 
         }
